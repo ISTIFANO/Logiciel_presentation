@@ -1,53 +1,150 @@
-import { FaFacebook, FaYoutube, FaLinkedin, FaWhatsapp } from 'react-icons/fa'; // Import the icons
-import work from '../assets/work.jpg';
-import { Link } from 'react-router-dom';
-export default function Banner() {
-    return (
-        <div className="relative bg-light-blue-100 dark:bg-zinc-800 overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-200 to-blue-500 opacity-50 animate-pulse"></div>
-          </div>
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-6 md:p-12">
-            <div className="flex flex-col items-start space-y-4 md:space-y-6">
-              <div className="flex space-x-2">
-                <a href="#" className="bg-red-500 text-white px-2 py-1 rounded-md">Moritsoft</a>
-              </div>
-              <h1 className="text-6xl md:text-5xl font-bold text-blue-900 dark:text-white">Partenaire de votre transformation digitale</h1>
-              <a href="#_" className="relative inline-block px-4 py-2 font-medium group">
-<span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-red-400 group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-<span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-blue-500"></span>
-<Link to='/ContactUs'><span className="relative text-black group-hover:text-white">Contactez Nous</span></Link>
-</a>
-            </div>
-            <div className="mt-6 md:mt-0">
-              <img src={work}alt="Team working" className="rounded-full w-{500px} h-96 object-cover" />
-              
-            </div>
-          </div>
-          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 space-y-2">
-            {/* Replace the placeholder images with social media icons */}
-            <a href="#" className="block bg-blue-700 text-white p-2 rounded-full "><FaLinkedin /></a>
-            <a href="#" className="block bg-blue-600 text-white p-2 rounded-full"><FaFacebook /></a>
-            <a href="#" className="block bg-red-600 text-white p-2 rounded-full"><FaYoutube /></a>
-            <a href="#" className="block bg-green-500 text-white p-2 rounded-full"><FaWhatsapp /></a>
-            
-          </div>
-          {/* Moved the style inside the component */}
-          <style>
-            {`
-              @keyframes pulse {
-                0%, 100% {
-                  opacity: 0.5;
-                }
-                50% {
-                  opacity: 1;
-                }
-              }
-              .animate-pulse {
-                animation: pulse 3s infinite;
-              }
-            `}
-          </style>
-        </div>
-    );
-}
+/* eslint-disable react/no-unescaped-entities */
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import pic1 from "../assets/Untitled1.jpg";
+const ShuffleHero = () => {
+  return (
+    <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
+      <div>
+        <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
+        Lorem ipsum dolor sit amet consectetur 
+        </span>
+        <h3 className="text-4xl md:text-6xl font-semibold">
+          Moritsoft
+        </h3>
+        <p className="text-base md:text-lg text-slate-700 my-4 md:my-6">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam nobis in
+          error repellat voluptatibus ad.
+        </p>
+        <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
+          Contacter Nous
+          </button>
+      </div>
+      <ShuffleGrid />
+    </section>
+  );
+};
+
+const shuffle = (array) => {
+  let currentIndex = array.length,
+    randomIndex;
+
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+};
+
+const squareData = [
+  {
+    id: 1,
+    src: pic1
+ },
+  {
+    id: 2,
+    src: pic1
+  },
+  {
+    id: 3,
+    src: pic1
+  },
+  {
+    id: 4,
+    src: pic1
+  },
+  {
+    id: 5,
+    src: pic1
+  },
+  {
+    id: 6,
+    src: pic1
+ },
+  {
+    id: 7,
+    src: pic1
+  },
+  {
+    id: 8,
+    src: pic1
+  },
+  {
+    id: 9,
+    src: pic1
+  },
+  {
+    id: 10,
+    src: pic1
+  },
+  {
+    id: 11,
+    src: pic1
+  },
+  {
+    id: 12,
+    src: pic1
+  },
+  {
+    id: 13,
+    src: pic1
+  },
+  {
+    id: 14,
+    src: pic1
+  },
+  {
+    id: 15,
+    src: pic1
+  },
+  {
+    id: 16,
+    src: pic1
+  },
+];
+
+const generateSquares = () => {
+  return shuffle(squareData).map((sq) => (
+    <motion.div
+      key={sq.id}
+      layout
+      transition={{ duration: 1.5, type: "spring" }}
+      className="w-full h-full"
+      style={{
+        backgroundImage: `url(${sq.src})`,
+        backgroundSize: "cover",
+      }}
+    ></motion.div>
+  ));
+};
+
+const ShuffleGrid = () => {
+  const timeoutRef = useRef(null);
+  const [squares, setSquares] = useState(generateSquares());
+
+  useEffect(() => {
+    shuffleSquares();
+
+    return () => clearTimeout(timeoutRef.current);
+  }, []);
+
+  const shuffleSquares = () => {
+    setSquares(generateSquares());
+
+    timeoutRef.current = setTimeout(shuffleSquares, 3000);
+  };
+
+  return (
+    <div className="grid grid-cols-4 grid-rows-4 h-[450px] gap-1">
+      {squares.map((sq) => sq)}
+    </div>
+  );
+};
+
+export default ShuffleHero;
