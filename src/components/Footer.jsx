@@ -1,14 +1,14 @@
   import logo from "../assets/moritlogo.png"; 
 const Footer = () =>{
 return(
-
-<footer className="bg-white w-screen">
+  
+<footer className="bg-black w-screen">
   <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div>
         <img src={logo} className="w-auto h-16"/>
 
-        <p className="mt-4 max-w-xs text-gray-500">
+        <p className="text-xs text-white font-bold">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse non cupiditate quae nam
           molestias.
         </p>
@@ -19,7 +19,7 @@ return(
               href="#"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:opacity-75"
+              className="text-xs text-white font-bold"
             >
               <span className="sr-only">Facebook</span>
 
@@ -38,7 +38,7 @@ return(
               href="#"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:opacity-75"
+              className="text-xs text-white font-bold"
             >
               <span className="sr-only">Instagram</span>
 
@@ -57,7 +57,7 @@ return(
               href="#"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:opacity-75"
+              className="text-xs text-white font-bold"
             >
               <span className="sr-only">Twitter</span>
 
@@ -74,7 +74,7 @@ return(
               href="#"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:opacity-75"
+              className="text-xs text-white font-bold"
             >
               <span className="sr-only">GitHub</span>
 
@@ -93,7 +93,7 @@ return(
               href="#"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:opacity-75"
+              className="text-xs text-white font-bold"
             >
               <span className="sr-only">Dribbble</span>
 
@@ -111,85 +111,85 @@ return(
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
         <div>
-          <p className="font-medium text-gray-900">Services</p>
+          <p className="text-xs text-white font-bold">Services</p>
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> 1on1 Coaching </a>
+              <a href="#" className="text-xs text-white font-bold"> 1on1 Coaching </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Company Review </a>
+              <a href="#" className="text-xs text-white font-bold"> Company Review </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Accounts Review </a>
+              <a href="#" className="text-xs text-white font-bold"> Accounts Review </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> HR Consulting </a>
+              <a href="#" className="text-xs text-white font-bold"> HR Consulting </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> SEO Optimisation </a>
+              <a href="#" className="text-xs text-white font-bold"> SEO Optimisation </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <p className="font-medium text-gray-900">Company</p>
+          <p className="text-xs text-white font-bold">Company</p>
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> About </a>
+              <a href="#" className="text-xs text-white font-bold"> About </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Meet the Team </a>
+              <a href="#" className="text-xs text-white font-bold"> Meet the Team </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Accounts Review </a>
+              <a href="#" className="text-xs text-white font-bold"> Accounts Review </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <p className="font-medium text-gray-900">Helpful Links</p>
+          <p className="text-xs text-white font-bold">Helpful Links</p>
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Contact </a>
+              <a href="#" className="text-xs text-white font-bold"> Contact </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> FAQs </a>
+              <a href="#" className="text-xs text-white font-bold"> FAQs </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Live Chat </a>
+              <a href="#" className="text-xs text-white font-bold"> Live Chat </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <p className="font-medium text-gray-900">Legal</p>
+          <p className="text-xs text-white font-bold">Legal</p>
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Accessibility </a>
+              <a href="#" className="text-xs text-white font-bold"> Accessibility </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Returns Policy </a>
+              <a href="#" className="text-xs text-white font-bold"> Returns Policy </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Refund Policy </a>
+              <a href="#" className="text-xs text-white font-bold"> Refund Policy </a>
             </li>
 
             <li>
-              <a href="#" className="text-gray-700 transition hover:opacity-75"> Hiring Statistics </a>
+              <a href="#" className="text-xs text-white font-bold"> Hiring Statistics </a>
             </li>
           </ul>
         </div>

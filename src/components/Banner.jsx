@@ -1,150 +1,83 @@
-/* eslint-disable react/no-unescaped-entities */
-import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import pic1 from "../assets/Untitled1.jpg";
-const ShuffleHero = () => {
-  return (
-    <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
-      <div>
-        <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
-        Lorem ipsum dolor sit amet consectetur 
-        </span>
-        <h3 className="text-4xl md:text-6xl font-semibold">
-          Moritsoft
-        </h3>
-        <p className="text-base md:text-lg text-slate-700 my-4 md:my-6">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam nobis in
-          error repellat voluptatibus ad.
-        </p>
-        <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
-          Contacter Nous
-          </button>
-      </div>
-      <ShuffleGrid />
-    </section>
-  );
-};
+import React, { useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
+import { Stars } from "@react-three/drei";
+import { FiArrowRight } from "react-icons/fi";
+import { useMotionTemplate, useMotionValue, motion, animate } from "framer-motion";
 
-const shuffle = (array) => {
-  let currentIndex = array.length,
-    randomIndex;
+const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
-  while (currentIndex != 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
-
-  return array;
-};
-
-const squareData = [
-  {
-    id: 1,
-    src: pic1
- },
-  {
-    id: 2,
-    src: pic1
-  },
-  {
-    id: 3,
-    src: pic1
-  },
-  {
-    id: 4,
-    src: pic1
-  },
-  {
-    id: 5,
-    src: pic1
-  },
-  {
-    id: 6,
-    src: pic1
- },
-  {
-    id: 7,
-    src: pic1
-  },
-  {
-    id: 8,
-    src: pic1
-  },
-  {
-    id: 9,
-    src: pic1
-  },
-  {
-    id: 10,
-    src: pic1
-  },
-  {
-    id: 11,
-    src: pic1
-  },
-  {
-    id: 12,
-    src: pic1
-  },
-  {
-    id: 13,
-    src: pic1
-  },
-  {
-    id: 14,
-    src: pic1
-  },
-  {
-    id: 15,
-    src: pic1
-  },
-  {
-    id: 16,
-    src: pic1
-  },
-];
-
-const generateSquares = () => {
-  return shuffle(squareData).map((sq) => (
-    <motion.div
-      key={sq.id}
-      layout
-      transition={{ duration: 1.5, type: "spring" }}
-      className="w-full h-full"
-      style={{
-        backgroundImage: `url(${sq.src})`,
-        backgroundSize: "cover",
-      }}
-    ></motion.div>
-  ));
-};
-
-const ShuffleGrid = () => {
-  const timeoutRef = useRef(null);
-  const [squares, setSquares] = useState(generateSquares());
+const AuroraHero = () => {
+  const color = useMotionValue(COLORS_TOP[0]);
 
   useEffect(() => {
-    shuffleSquares();
+    animate(color, COLORS_TOP, {
+      ease: "easeInOut",
+      duration: 10,
+      repeat: Infinity,
+      repeatType: "mirror",
+    });
+  }, [color]);
 
-    return () => clearTimeout(timeoutRef.current);
-  }, []);
+  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #020617 50%, ${color})`;
+  const border = useMotionTemplate`1px solid ${color}`;
+  const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
 
-  const shuffleSquares = () => {
-    setSquares(generateSquares());
-
-    timeoutRef.current = setTimeout(shuffleSquares, 3000);
+  const floatVariants = {
+    animate: {
+      y: [0, -10, 0],
+      transition: {
+        duration: 4,
+        ease: "easeInOut",
+        repeat: Infinity,
+        repeatType: "loop",
+      },
+    },
   };
 
   return (
-    <div className="grid grid-cols-4 grid-rows-4 h-[450px] gap-1">
-      {squares.map((sq) => sq)}
-    </div>
+    <motion.section
+      style={{ backgroundImage }}
+      className="relative grid min-h-screen place-content-center w-screen overflow-hidden bg-gray-950 px-4 py-24 text-gray-200"
+    >
+      <div className="relative z-10 flex flex-col items-center">
+        <motion.span
+          variants={floatVariants}
+          animate="animate"
+          className="mb-1.5 inline-block rounded-full bg-gray-600/50 px-3 py-1.5 text-sm"
+        >
+          Beta Now Live!
+        </motion.span>
+        <motion.h1
+          variants={floatVariants}
+          animate="animate"
+          className="max-w-3xl bg-gradient-to-br from-white to-gray-400 bg-clip-text text-center text-3xl font-medium leading-tight text-transparent sm:text-5xl sm:leading-tight md:text-7xl md:leading-tight"
+        >
+          Moritsoft
+        </motion.h1>
+        <motion.p
+          variants={floatVariants}
+          animate="animate"
+          className="my-6 max-w-xl text-center text-base leading-relaxed md:text-lg md:leading-relaxed"
+        >
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae, et, distinctio eum impedit nihil ipsum modi.
+        </motion.p>
+        <motion.button
+          style={{ border, boxShadow }}
+          whileHover={{ scale: 1.015 }}
+          whileTap={{ scale: 0.985 }}
+          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 px-4 py-2 text-gray-50 transition-colors hover:bg-gray-950/50"
+        >
+          Start free trial
+          <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
+        </motion.button>
+      </div>
+      <div className="absolute inset-0 z-0">
+        <Canvas>
+          <Stars radius={50} count={2500} factor={4} fade speed={2} />
+        </Canvas>
+      </div>
+    </motion.section>
   );
 };
 
-export default ShuffleHero;
+export default AuroraHero;
